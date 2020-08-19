@@ -27,7 +27,7 @@ Internacionales:
 <div [ngStyle]="{'background': plato.stock!==0 ? 'orange' :'red' }">
 <app-examen [name]="plato.nombre | uppercase" [stock]="plato.stock" [precio]="plato.precio" 
     ></app-examen>
-<button style="color:white; background:blue; padding:5px" (click)="pedir(plato.nombre)" >Pedir</button>
+<button [disabled]="plato.stock == 0 ? true : false" style="color:white; background:blue; padding:5px" (click)="pedir(plato.nombre)" >Pedir</button>
 </div>
 </div>
 </div> 
