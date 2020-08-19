@@ -1,1 +1,36 @@
+<div style="border: 5px solid #00aae4; background: #00aae4">
+  Pedidos YA: Stock Platos : {{sumar(this.platos)}}
+  <div *ngIf="sumar(this.platos)==0" style="border: 5px solid 283531; background: #283531">
+  Ya se realizaron todos los pedidos
+  </div>
+  &nbsp;
+<div style="background: #00aae4">
+Nacionales:
+&nbsp;
+<div *ngFor="let plato of platos" stock=stock+plato.stock>
+<div *ngIf="plato.existe && plato.tipo=='nacional'">
+&nbsp;
+<div [ngStyle]="{'background': plato.stock!==0 ? 'orange' :'red' }">
+<app-examen [name]="plato.nombre | uppercase" [stock]="plato.stock" [precio]="plato.precio" 
+    ></app-examen>
+<button [disabled]="plato.stock == 0 ? true : false" style="color:white; background:blue; padding:5px" (click)="pedir(plato.nombre)" >Pedir</button>
+</div>
+</div>
+</div> 
+</div> 
+ &nbsp;
+<div style="background: #00aae4">
+Internacionales: 
+<div *ngFor="let plato of platos" stock2=stock+plato.stock>
+<div *ngIf="plato.existe && plato.tipo=='internacional'">
+&nbsp;
+<div [ngStyle]="{'background': plato.stock!==0 ? 'orange' :'red' }">
+<app-examen [name]="plato.nombre | uppercase" [stock]="plato.stock" [precio]="plato.precio" 
+    ></app-examen>
+<button style="color:white; background:blue; padding:5px" (click)="pedir(plato.nombre)" >Pedir</button>
+</div>
+</div>
+</div> 
 
+</div> 
+</div> 
