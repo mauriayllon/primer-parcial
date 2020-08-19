@@ -26,7 +26,7 @@ export class AppComponent  {
   },{nombre : 'silpancho', 
   stock: 45, 
   precio : 5, 
-  tipo : 'nacional',
+  tipo : 'nacional', 
   existe: true
   },{nombre : 'pulao',
   stock: 20, 
@@ -62,7 +62,7 @@ sumar(platos){
     let aux = 0;
   for(let i=0; i< this.platos.length;i++){
     aux = aux + this.platos[i].stock;
-}
+} 
     return aux;
 }
 

@@ -18,4 +18,4 @@ export class ExamenComponent implements OnInit {
   ngOnInit() {
   }
 
-}
+} 
