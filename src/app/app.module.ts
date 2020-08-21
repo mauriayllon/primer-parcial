@@ -9,6 +9,7 @@ import { ProviderModule } from './modules/provider/provider.module';
 
 
 
+
 @NgModule({
   imports:      [ 
    BrowserModule,
@@ -16,7 +17,7 @@ import { ProviderModule } from './modules/provider/provider.module';
    DishModule, 
    ProviderModule],
   declarations: [ 
-   AppComponent 
+   AppComponent,
     ],
   bootstrap:    [ 
    AppComponent 
