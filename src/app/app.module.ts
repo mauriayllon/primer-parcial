@@ -3,12 +3,23 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { HelloComponent } from './hello.component';
-import { ExamenComponent } from './components/examen/examen.component';
+import { DishModule } from './modules/dish/dish.module';
+import { ProviderModule } from './modules/provider/provider.module';
+
+
+
 
 @NgModule({
-  imports:      [ BrowserModule, FormsModule ],
-  declarations: [ AppComponent, HelloComponent, ExamenComponent ],
-  bootstrap:    [ AppComponent ]
+  imports:      [ 
+   BrowserModule,
+   FormsModule, 
+   DishModule, 
+   ProviderModule],
+  declarations: [ 
+   AppComponent 
+    ],
+  bootstrap:    [ 
+   AppComponent 
+    ]
 })
 export class AppModule { }
