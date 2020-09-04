@@ -1,6 +1,8 @@
 <div style="border: 5px solid #00aae4; background: #00aae4">
 <p>SUPER TICKET :</p>
+<div style="border: 5px solid #00aae4; background: #012b6e">
 <p>NACIONAL</p>
+</div>
 <div class="row">
   <div *ngFor="let product of products"
        class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3"
@@ -19,14 +21,17 @@
         </p>
       </mat-card-content>
       <mat-card-actions>
-        <button mat-button>Comprar</button>
+        <button mat-button style="color:green">Editar</button>
+        <button mat-button [disabled]="product.stock == 0 ? true : false" style="color:green" (click)="comprar(product.name)">Comprar</button>
       </mat-card-actions>
     </mat-card>
     </div>
   </div>
   </div>
 </div>
+<div style="border: 5px solid #00aae4; background: #012b6e">
 <p>INTERNACIONAL</p>
+</div>
 <div class="row">
   <div *ngFor="let product of products"
        class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3"
@@ -45,7 +50,8 @@
         </p>
       </mat-card-content>
       <mat-card-actions>
-        <button mat-button>Comprar</button>
+        <button mat-button style="color:green">Editar</button>
+        <button mat-button [disabled]="product.stock == 0 ? true : false" style="color:green" (click)="comprar(product.name)" >Comprar</button>
       </mat-card-actions>
     </mat-card>
     </div>

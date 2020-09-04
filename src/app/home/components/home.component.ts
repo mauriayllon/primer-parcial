@@ -25,5 +25,8 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.productSubs ? this.productSubs.unsubscribe():'';
   }
 
-
+  comprar(nombre:string){
+  let index = this.products.findIndex(s=>s.name == nombre);
+  this.products[index].stock = this.products[index].stock-1;
+}
 }
