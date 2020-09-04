@@ -3,6 +3,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
+import { AppRouting } from './app.routing';
+import { HomeModule } from './home/home.module';
+
 
 
 
@@ -11,12 +14,15 @@ import { AppComponent } from './app.component';
   imports:      [ 
    BrowserModule,
    FormsModule, 
+   AppRouting,
+   HomeModule
    ],
   declarations: [ 
-   AppComponent,
+   AppComponent, 
     ],
   bootstrap:    [ 
    AppComponent 
-    ]
+    ],
+  providers: []
 })
 export class AppModule { }
