@@ -3,9 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { DishModule } from './modules/dish/dish.module';
-import { ProviderModule } from './modules/provider/provider.module';
-
 
 
 
@@ -14,8 +11,7 @@ import { ProviderModule } from './modules/provider/provider.module';
   imports:      [ 
    BrowserModule,
    FormsModule, 
-   DishModule, 
-   ProviderModule],
+   ],
   declarations: [ 
    AppComponent,
     ],
