@@ -72,6 +72,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
  
   onEnviar2(){
+    this.loadProduct();
     console.log('Form group: ',this.productForm.value);
     this.productSubs = this.productService.addProduct(this.productForm.value).subscribe(
       res => {console.log('Resp: ', res)}, err =>{
@@ -85,5 +86,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.productDeleteSubs ? this.productDeleteSubs.unsubscribe():'';
     this.productUpdateSubs ? this.productUpdateSubs.unsubscribe():'';
     }
+
+    
  
 }

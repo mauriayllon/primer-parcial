@@ -51,7 +51,7 @@ SUPER TICKET
        class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3"
        style="padding: 50px; display: flex; justify-content: center;">
     <div *ngIf="product.type=='nacional' || product.typee=='nacional'">
-      <div [ngStyle]="{'background': (product.stock!==0 || product.stock!='0') ? 'orange' :'red' }">
+      <div [ngStyle]="{'background': product.stock!==0  ? 'orange' :'red' }">
     <mat-card class="example-card">
       <mat-card-header>
         <mat-card-title>Nombre : {{product.name | uppercase}} </mat-card-title>
@@ -59,7 +59,7 @@ SUPER TICKET
       </mat-card-header>
       <img mat-card-image [src]="product.urlImage" alt="SuperTicket">
       <mat-card-content>
-        <div *ngIf="product.stock!=0">
+        <div *ngIf="product.stock!==0">
         Habilitado: Si
         </div>
         <div *ngIf="product.stock==0">
@@ -82,7 +82,7 @@ SUPER TICKET
   <div *ngFor="let product of products"
        class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3"
        style="padding: 50px; display: flex; justify-content: center;">
- <div [ngStyle]="{'background': (product.stock!==0 || product.stock!='0') ? 'orange' :'red'}">
+ <div [ngStyle]="{'background': product.stock!==0 ? 'orange' : 'red'}">
     <div *ngIf="product.type=='internacional' || product.typee=='internacional'">
     <mat-card class="example-card">
       <mat-card-header>
@@ -91,7 +91,7 @@ SUPER TICKET
       </mat-card-header>
       <img mat-card-image [src]="product.urlImage" alt="SuperTicket">
       <mat-card-content>
-        <div *ngIf="product.stock!=0">
+        <div *ngIf="product.stock!==0">
         Habilitado: Si
         </div>
         <div *ngIf="product.stock==0">

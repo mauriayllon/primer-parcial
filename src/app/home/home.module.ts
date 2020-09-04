@@ -10,6 +10,9 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MatSliderModule } from '@angular/material/slider';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   imports: [
@@ -20,8 +23,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatSidenavModule,
     MatButtonModule,
     MatCardModule,
-    MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    NgbModule,
+    MatSliderModule,
+    MatIconModule,
+    MatFormFieldModule
   ],
   declarations: [
     HomeComponent

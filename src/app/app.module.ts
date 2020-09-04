@@ -15,7 +15,7 @@ import { HomeModule } from './home/home.module';
    BrowserModule,
    FormsModule, 
    AppRouting,
-   HomeModule
+   HomeModule,
    ],
   declarations: [ 
    AppComponent, 
