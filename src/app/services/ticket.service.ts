@@ -16,10 +16,10 @@ export class TicketService {
   }
 
   public deleteProduct(id: any): Observable<any>{
-    return this.http.delete(`https://super-ticket-test.firebaseio.com/concerts/{id}.json`)
+    return this.http.delete('https://super-ticket-test.firebaseio.com/concerts/'+id+'.json')
   }
 
   public updateProduct(id:any, ticket:any): Observable<any>{
-    return this.http.put(`https://super-ticket-test.firebaseio.com/concerts/{id}.json`,ticket)
+    return this.http.put('https://super-ticket-test.firebaseio.com/concerts/'+id+'.json',ticket)
   }
 }

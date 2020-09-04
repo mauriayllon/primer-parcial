@@ -15,11 +15,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   imports: [
     CommonModule,
     BrowserAnimationsModule,
-    HttpClientModule,
-    MatCardModule,
-    MatButtonModule,
     ReactiveFormsModule,
+    HttpClientModule,
     MatSidenavModule,
+    MatButtonModule,
+    MatCardModule,
     MatFormFieldModule,
     MatInputModule
   ],
