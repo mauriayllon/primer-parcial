@@ -1,5 +1,8 @@
 <div style="border: 5px solid #00aae4; background: #00aae4">
-<p>SUPER TICKET :</p>
+SUPER TICKET
+&nbsp;
+&nbsp;
+<button mat-button style="color:green">CREAR</button>
 <div style="border: 5px solid #00aae4; background: #012b6e">
 <p>NACIONAL</p>
 </div>
@@ -16,9 +19,12 @@
       </mat-card-header>
       <img mat-card-image [src]="product.urlImage" alt="SuperTicket">
       <mat-card-content>
-        <p>
-          {{product.type}}
-        </p>
+        <div *ngIf="product.enable && product.stock!=0">
+        Habilitado: Si
+        </div>
+        <div *ngIf="product.stock==0">
+        Habilitado: No
+        </div>
       </mat-card-content>
       <mat-card-actions>
         <button mat-button style="color:green">Editar</button>
@@ -45,9 +51,12 @@
       </mat-card-header>
       <img mat-card-image [src]="product.urlImage" alt="SuperTicket">
       <mat-card-content>
-        <p>
-          {{product.type}}
-        </p>
+        <div *ngIf="product.enable">
+        Habilitado: Si
+        </div>
+        <div *ngIf="!product.enable">
+        Habilitado: No
+        </div>
       </mat-card-content>
       <mat-card-actions>
         <button mat-button style="color:green">Editar</button>

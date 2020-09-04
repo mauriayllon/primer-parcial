@@ -28,5 +28,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   comprar(nombre:string){
   let index = this.products.findIndex(s=>s.name == nombre);
   this.products[index].stock = this.products[index].stock-1;
+  if(this.products[index].stock==0){
+    this.products[index].enable==false;
+  }
 }
 }
