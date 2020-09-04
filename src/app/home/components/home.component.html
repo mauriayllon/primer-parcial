@@ -2,7 +2,7 @@
   <mat-drawer #drawer style="width:300px; height:100%;" mode="side" [position]="'end'">
   <form [formGroup]="productForm" style="display: flex; flex-direction: column;">
    <mat-form-field>
-   <mat-label center=''>Name</mat-label>
+   <mat-label>Name</mat-label>
   <input matInput formControlName="name" type="text">
   </mat-form-field>
   <div *ngIf="productForm.get('name').invalid &&
