@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { TicketService } from '../../services/ticket.service';
+import { FormBuilder } from '@angular/forms';
 
 
 @Component({
@@ -13,8 +14,11 @@ export class HomeComponent implements OnInit, OnDestroy {
   products=[];
 
   productSubs: Subscription;
+  productGetSubs: Subscription;
+  productDeleteSubs: Subscription;
+  productUpdateSubs: Subscription;
   
-  constructor(private productService: TicketService) { }
+  constructor(private formBuilder: FormBuilder,private productService: TicketService) { }
 
   ngOnInit(): void {
     this.productSubs = this.productService.getProducts().subscribe(res => {
