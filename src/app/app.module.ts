@@ -7,7 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSliderModule} from 
 '@angular/material/slider';
 import {MatIconModule} from '@angular/material/icon';
-import { HttpClientModule, } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS, } from '@angular/common/http';
 import {StoreModule} from '@ngrx/store';
 import {EffectsModule} from '@ngrx/effects';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
@@ -16,6 +16,8 @@ import {metaReducers} from './core/meta';
 import {reducers} from './core';
 import { AuthService } from './shared/services/auth.service';
 import { AppRouting } from './app-routing.module';
+import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
+import { AmazonService } from './amazon.service';
 
 
 @NgModule({
@@ -38,6 +40,12 @@ import { AppRouting } from './app-routing.module';
   exports: [],
   bootstrap: [AppComponent],
   providers: [
-  AuthService]
+  AuthService,
+  {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    }
+  ]
 })
 export class AppModule { } 
