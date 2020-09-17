@@ -2,6 +2,7 @@ import { Component, OnInit,OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AmazonService } from '../../../../shared/services/amazon.service';
+import { CardComponent } from '../card/card.component';
  
  
 @Component({
@@ -13,7 +14,7 @@ export class HomeComponent implements OnInit, OnDestroy {
  
   products=[];
  
-  productForm : FormGroup;
+  productFormm : FormGroup;
   //nameControl = new FormControl();
  
   productSubs: Subscription;
@@ -22,10 +23,17 @@ export class HomeComponent implements OnInit, OnDestroy {
   productUpdateSubs: Subscription;
   idEdit: any;
  
-  constructor(private formBuilder: FormBuilder, private productService: AmazonService) {}
+  constructor(private productService: AmazonService, private formBuilder: FormBuilder) {}
  
   ngOnInit() {
     this.loadProduct();
+     this.productFormm = this.formBuilder.group({
+      name:['', [Validators.minLength(3)]],
+      size:'',
+      stock:'',
+      type:['',[Validators.required]],
+      urlImage:''
+    })
   } 
  
   loadProduct(): void {
@@ -49,11 +57,11 @@ export class HomeComponent implements OnInit, OnDestroy {
  
   onEdit(product): void {
     this.idEdit = product.id;
-    this.productForm.patchValue(product);
+    this.productFormm.patchValue(product);
   }
  
   onUpdateProduct(): void {
-    this.productUpdateSubs = this.productService.updateProduct(this.idEdit, this.productForm.value).subscribe(
+    this.productUpdateSubs = this.productService.updateProduct(this.idEdit, this.productFormm.value).subscribe(
       res => {
         console.log('RESP UPDATE: ', res);
         this.loadProduct();
@@ -66,8 +74,8 @@ export class HomeComponent implements OnInit, OnDestroy {
  
   onEnviar2(){
     this.loadProduct();
-    console.log('Form group: ',this.productForm.value);
-    this.productSubs = this.productService.addProduct(this.productForm.value).subscribe(
+    console.log('Form group: ',this.productFormm.value);
+    this.productSubs = this.productService.addProduct(this.productFormm.value).subscribe(
       res => {console.log('Resp: ', res)}, err =>{
         console.log('Error de servidor')
       })

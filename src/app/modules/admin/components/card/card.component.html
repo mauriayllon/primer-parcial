@@ -1,4 +1,8 @@
+<div style="padding: 5px; display: flex; justify-content: center;">
 <form [formGroup]="productForm" style="display: flex; flex-direction: column;">
+  <mat-card-header style="padding-left: 10px">
+    <mat-card-title>Crear/Editar</mat-card-title>
+  </mat-card-header>
    <mat-form-field>
    <mat-label>Name</mat-label>
   <input matInput formControlName="name" type="text">
@@ -11,6 +15,10 @@
       Name must have 3 characteres min
     </div>
   </div>
+  <mat-form-field>
+  <mat-label>Size</mat-label>
+  <input matInput formControlName="size" type="text">
+    </mat-form-field>
    <mat-form-field>
   <mat-label>ImageUrl</mat-label>
   <input matInput formControlName="urlImage" type="text">
@@ -29,8 +37,9 @@
   </div>
     <mat-form-field>
     <mat-label>Stock</mat-label>
-  <input matInput formControlName="stock" type="text">
+  <input matInput formControlName="stock" type="number">
     </mat-form-field>
     <button >Crear</button>
     <button >Editar</button>
 </form>
+</div>
