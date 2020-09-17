@@ -14,12 +14,13 @@ import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {environment} from '../environments/environment';
 import {metaReducers} from './core/meta';
 import {reducers} from './core';
+import { AuthService } from './shared/services/auth.service';
+import { AppRouting } from './app-routing.module';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-
   ],
   imports: [
     BrowserModule,
@@ -29,6 +30,7 @@ import {reducers} from './core';
     MatSliderModule,
     MatIconModule,
     HttpClientModule,
+    AppRouting,
     StoreModule.forRoot(reducers, {metaReducers}),
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({name: 'Angular Course', logOnly: environment.production})
@@ -36,6 +38,6 @@ import {reducers} from './core';
   exports: [],
   bootstrap: [AppComponent],
   providers: [
-  ]
+  AuthService]
 })
 export class AppModule { } 
