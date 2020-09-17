@@ -41,14 +41,17 @@
     <mat-label>Stock</mat-label>
   <input matInput formControlName="stock" type="number">
     </mat-form-field>
-    <button (click)="onEnviar2()">Crear</button>
-    <button (click)="onUpdateProduct(); drawer.toggle()" >Editar</button>
+    <button (click)="onSaveProduct(); drawer.toggle()" >Save</button>
 </form>
 </div>
   </mat-drawer>
   <div class="example-sidenav-content">
   <div style="border: 5px solid #00aae4; background: #00aae4">
-<button mat-button style="color:green"(click)="drawer.toggle()">CREAR</button>
+<button mat-button style="color:green"(click)="drawer.toggle(); this.sw=true;">CREAR</button>
+<br>
+<br>
+<button mat-button 
+style="color:green">REPORT</button>
 <div style="border: 5px solid #00aae4; background: #012b6e">
 <p>Hot</p>
 </div>
@@ -81,7 +84,7 @@
       </mat-card-content>
       <mat-card-actions>
         <div *ngIf="product.stock!==0">
-        <button mat-button style="color:green" (click)="onEdit(product); drawer.toggle()">Edit</button>
+        <button mat-button style="color:green" (click)="onEdit(product); drawer.toggle(); this.sw=false;">Edit</button>
         </div>
         <br>
         <div>

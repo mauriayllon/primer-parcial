@@ -13,7 +13,7 @@ import { CardComponent } from '../card/card.component';
 export class HomeComponent implements OnInit, OnDestroy {
  
   products=[];
- 
+  sw:boolean;
   productFormm : FormGroup;
   //nameControl = new FormControl();
  
@@ -88,6 +88,24 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.productUpdateSubs ? this.productUpdateSubs.unsubscribe():'';
     }
 
-    
+    onSaveProduct(){
+      if(this.sw){
+        this.productSubs = this.productService.addProduct(this.productFormm.value).subscribe(
+      res => {console.log('Resp: ', res),
+       this.loadProduct();}, err =>{
+        console.log('Error de servidor')
+      })
+      }else{
+        this.productUpdateSubs = this.productService.updateProduct(this.idEdit, this.productFormm.value).subscribe(
+      res => {
+        console.log('RESP UPDATE: ', res);
+        this.loadProduct();
+      },
+      err => {
+        console.log('ERROR UPDATE DE SERVIDOR');
+      }
+    );
+      }
+    }
  
 }
