@@ -17,7 +17,6 @@ import {reducers} from './core';
 import { AuthService } from './shared/services/auth.service';
 import { AppRouting } from './app-routing.module';
 import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
-import { AmazonService } from './amazon.service';
 
 
 @NgModule({
