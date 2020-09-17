@@ -73,10 +73,10 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
  
   onEnviar2(){
-    this.loadProduct();
     console.log('Form group: ',this.productFormm.value);
     this.productSubs = this.productService.addProduct(this.productFormm.value).subscribe(
-      res => {console.log('Resp: ', res)}, err =>{
+      res => {console.log('Resp: ', res),
+       this.loadProduct();}, err =>{
         console.log('Error de servidor')
       })
   }

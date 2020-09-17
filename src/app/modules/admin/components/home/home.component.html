@@ -59,10 +59,25 @@
     <div *ngIf="product.type=='calor'">
       <div [ngStyle]="{'background': product.stock!==0  ? 'orange' :'red' }">
     <mat-card class="example-card">
-      <img mat-card-image [src]="product.urlImage" alt="SuperTicket">
-      <mat-card-content>
-        <p>Size: {{product.size}}</p>
-        <p>Stock : {{product.stock}}</p>
+      <img mat-card-image [src]="product.urlImage" alt="">
+     <mat-card-content>
+        <p>Nombre: {{product.name}}</p>
+         <div *ngIf="(product.size>=0&&product.size<=20)">
+         <p>Size: XS</p>
+        </div>
+        <div *ngIf="(product.size>=21&&product.size<=30)">
+         <p>Size: S</p>
+        </div>
+        <div *ngIf="(product.size>=31&&product.size<=50)">
+         <p>Size: M</p>
+        </div>
+        <div *ngIf="(product.size>=51&&product.size<=70)">
+         <p>Size: L</p>
+        </div>
+        <div *ngIf="(product.size>=71&&product.size<=100)">
+         <p>Size: XL</p>
+        </div>
+      <p>Stock : {{product.stock}}</p>
       </mat-card-content>
       <mat-card-actions>
         <div *ngIf="product.stock!==0">
@@ -88,14 +103,25 @@
  <div [ngStyle]="{'background': product.stock!==0 ? 'orange' : 'red'}">
     <div *ngIf="product.type=='frio'">
     <mat-card class="example-card">
-      <mat-card-header>
-        <mat-card-title>Nombre : {{product.name | uppercase}}</mat-card-title>
-        <mat-card-subtitle>Stock: {{product.stock}} </mat-card-subtitle>
-      </mat-card-header>
-      <img mat-card-image [src]="product.urlImage" alt="SuperTicket">
+      <img mat-card-image [src]="product.urlImage" alt="">
       <mat-card-content>
-        Stock : {{product.name | uppercase}}
-        Nombre : {{product.name | uppercase}}
+        <p>Nombre: {{product.name}}</p>
+         <div *ngIf="(product.size>=0&&product.size<=20)">
+         <p>Size: XS</p>
+        </div>
+        <div *ngIf="(product.size>=21&&product.size<=30)">
+         <p>Size: S</p>
+        </div>
+        <div *ngIf="(product.size>=31&&product.size<=50)">
+         <p>Size: M</p>
+        </div>
+        <div *ngIf="(product.size>=51&&product.size<=70)">
+         <p>Size: L</p>
+        </div>
+        <div *ngIf="(product.size>=71&&product.size<=100)">
+         <p>Size: XL</p>
+        </div>
+      <p>Stock : {{product.stock}}</p>
       </mat-card-content>
       <mat-card-actions>
         <div *ngIf="product.stock!==0">
