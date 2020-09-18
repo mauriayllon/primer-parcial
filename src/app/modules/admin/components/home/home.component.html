@@ -33,7 +33,7 @@
               (productFormm.get('type').touched ||
               productFormm.get('type').dirty)"
        class="alert alert-danger">
-    <div *ngIf="productFormm.get('typee').errors.required">
+    <div *ngIf="productFormm.get('type').errors.required">
       Type required
     </div>
   </div>
@@ -52,11 +52,19 @@
 <br>
 <button mat-button 
 style="color:green" [disabled]="!this.sw2" (click)="onReport()">REPORT</button>
+<br>
+<br>
+<div>
+<label for="fname">Search:</label>
+  <input type="text" [(ngModel)]="name" id="fname" name="fname">
+    <button mat-button 
+style="color:green" (click)="onSearch(this.name)">Search</button>
+</div>
 <div style="border: 5px solid #00aae4; background: #012b6e">
 <p>Hot</p>
 </div>
 <div class="row">
-  <div *ngFor="let product of products"
+  <div *ngFor="let product of productsCarlor"
        class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3"
        style="padding: 50px; display: flex; justify-content: center;">
     <div *ngIf="product.type=='calor'">
@@ -64,7 +72,7 @@ style="color:green" [disabled]="!this.sw2" (click)="onReport()">REPORT</button>
     <mat-card class="example-card">
       <img mat-card-image [src]="product.urlImage" alt="">
      <mat-card-content>
-        <p>Nombre: {{product.name}}</p>
+        <p>Nombre: {{product.name|uppercase}}</p>
          <div *ngIf="(product.size>=0&&product.size<=20)">
          <p>Size: XS</p>
         </div>
@@ -100,7 +108,7 @@ style="color:green" [disabled]="!this.sw2" (click)="onReport()">REPORT</button>
 <p>Cold</p>
 </div>
 <div class="row">
-  <div *ngFor="let product of products"
+  <div *ngFor="let product of productsFrio"
        class="col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3"
        style="padding: 50px; display: flex; justify-content: center;">
  <div [ngStyle]="{'background': product.stock!==0 ? 'orange' : 'red'}">
@@ -108,7 +116,7 @@ style="color:green" [disabled]="!this.sw2" (click)="onReport()">REPORT</button>
     <mat-card class="example-card">
       <img mat-card-image [src]="product.urlImage" alt="">
       <mat-card-content>
-        <p>Nombre: {{product.name}}</p>
+        <p>Nombre: {{product.name|uppercase}}</p>
          <div *ngIf="(product.size>=0&&product.size<=20)">
          <p>Size: XS</p>
         </div>

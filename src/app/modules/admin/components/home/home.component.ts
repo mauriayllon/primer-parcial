@@ -1,9 +1,9 @@
-import { Component, OnInit,OnDestroy } from '@angular/core';
+import { Component, OnInit,OnDestroy, Input } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AmazonService } from '../../../../shared/services/amazon.service';
-import { CardComponent } from '../card/card.component';
 import { AdminComponent } from '../../admin.component';
+import { CardComponent } from '../card/card.component';
  
  
 @Component({
@@ -13,9 +13,13 @@ import { AdminComponent } from '../../admin.component';
 })
 export class HomeComponent implements OnInit, OnDestroy {
   sw2=true;
-  products=[];
+  sw3:boolean;
+  productsCarlor=[];
+  productsFrio=[];
   sw:boolean;
   productFormm : FormGroup;
+
+  @Input() var: string='a';
   //nameControl = new FormControl();
  
   productSubs: Subscription;
@@ -24,32 +28,59 @@ export class HomeComponent implements OnInit, OnDestroy {
   productUpdateSubs: Subscription;
   idEdit: any;
  
-  constructor(private productService: AmazonService, private formBuilder: FormBuilder, private adminComponent: AdminComponent) {}
+  constructor(private productService: AmazonService, private formBuilder: FormBuilder, private adminComponent: AdminComponent) {
+    this.var='e';
+  }
  
   ngOnInit() {
     this.sw2=true;
-    this.loadProduct();
+    this.loadProduct(true);
      this.productFormm = this.formBuilder.group({
       name:['', [Validators.minLength(3)]],
-      size:'',
-      stock:'',
+      size:['',[Validators.required]],
+      stock:['',[Validators.required]],
       type:['',[Validators.required]],
-      urlImage:''
+      urlImage:['',[Validators.required]]
     })
   } 
  
-  loadProduct(): void {
-    this.products = [];
-    this.productGetSubs = this.productService.getProducts().subscribe(res => {
-      Object.entries(res).map((p: any) => this.products.push({id: p[0], ...p[1]}));
+  loadProduct(s:boolean): void {
+      console.log('hola chozzp');
+      console.log(this.var);
+      if(s){
+      this.productsCarlor = [];
+      this.productsFrio= [];
+      this.productGetSubs = this.productService.getProducts().subscribe(res => {
+        Object.entries(res).map((p: any) => {
+        if (p[1].type=='calor') {
+          this.productsCarlor.push({id: p[0], ...p[1]});
+        } else {
+          this.productsFrio.push({id: p[0], ...p[1]});
+        }
+      });
     });
+  }else{
+    console.log('False');
+    console.log(this.var);
+    this.productsCarlor = [];
+    this.productsFrio= [];
+    this.productGetSubs = this.productService.getProducts().subscribe(res => {
+      Object.entries(res).map((p: any) => {
+        if (p[1].type=='calor' && p[1].name.includes(this.var)) {
+          this.productsCarlor.push({id: p[0], ...p[1]});
+        } else if (p[1].type=='frio' && p[1].name.includes(this.var)){
+          this.productsFrio.push({id: p[0], ...p[1]});
+        }
+      });
+    });
+  }
   }
  
   onDelete(id: any): void {
    this.productDeleteSubs = this.productService.deleteProduct(id).subscribe(
       res => {
         console.log('RESPONSE: ', res);
-        this.loadProduct();
+        this.loadProduct(true);
       },
       err => {
         console.log('ERROR: ');
@@ -66,7 +97,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.productUpdateSubs = this.productService.updateProduct(this.idEdit, this.productFormm.value).subscribe(
       res => {
         console.log('RESP UPDATE: ', res);
-        this.loadProduct();
+        this.loadProduct(true);
       },
       err => {
         console.log('ERROR UPDATE DE SERVIDOR');
@@ -78,7 +109,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     console.log('Form group: ',this.productFormm.value);
     this.productSubs = this.productService.addProduct(this.productFormm.value).subscribe(
       res => {console.log('Resp: ', res),
-       this.loadProduct();}, err =>{
+       this.loadProduct(true);}, err =>{
         console.log('Error de servidor')
       })
   }
@@ -94,14 +125,14 @@ export class HomeComponent implements OnInit, OnDestroy {
       if(this.sw){
         this.productSubs = this.productService.addProduct(this.productFormm.value).subscribe(
       res => {console.log('Resp: ', res),
-       this.loadProduct();}, err =>{
+       this.loadProduct(true);}, err =>{
         console.log('Error de servidor')
       })
       }else{
         this.productUpdateSubs = this.productService.updateProduct(this.idEdit, this.productFormm.value).subscribe(
       res => {
         console.log('RESP UPDATE: ', res);
-        this.loadProduct();
+        this.loadProduct(true);
       },
       err => {
         console.log('ERROR UPDATE DE SERVIDOR');
@@ -113,6 +144,12 @@ export class HomeComponent implements OnInit, OnDestroy {
       this.sw2=false;
       console.log('pp')
       this.adminComponent.onReport();
+    }
+
+    onSearch(name:string){
+      this.var=name;
+      this.sw3=false;
+      this.loadProduct(false);
     }
  
 }

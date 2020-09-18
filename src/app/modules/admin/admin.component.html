@@ -30,9 +30,9 @@
     <div *ngFor="let product of report">
     StockTotal:{{product.total}}
 
-    HOT:{{product.total}}
+    HOT:{{product.hot}}
 
-    COLD:{{product.total}}
+    COLD:{{product.cold}}
     </div>
     </div>
     <button routerLink="/login" (click)="onLogout()" type="button" class="btn btn-warning">LOGOUT</button>

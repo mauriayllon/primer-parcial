@@ -44,7 +44,7 @@ export class AdminComponent implements OnInit {
   onReport(){
     this.sw=true;
     this.store.dispatch(AddProduct({product: {
-    "total":this.sumar(),
+    "total": this.sumar(),
     "hot": this.sumarHot(), 
     "cold": this.sumarCold()
     }}));

@@ -2,6 +2,7 @@ import { Component, OnDestroy,  OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { AmazonService } from '../../../../shared/services/amazon.service';
+import { HomeComponent } from '../home/home.component';
 
 @Component({
   selector: 'app-card',
