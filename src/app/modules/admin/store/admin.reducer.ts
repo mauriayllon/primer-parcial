@@ -2,6 +2,7 @@ import { state } from '@angular/animations';
 import {Action, createReducer, on} from '@ngrx/store';
 import { AddProduct } from './admin.actions';
 
+
 export interface HomeState {
   items: any;
   totalAmount: number;
@@ -14,7 +15,7 @@ export const initialState: HomeState = {
 
 const featureReducer = createReducer(
   initialState,
-  on(AddProduct, (state,{product})=>({items:  state.items.push(product),...state}))
+  on(AddProduct, (state,{product})=>({...state,items:  state.items.concat(product)}))
 );
 
 export function reducer(state: HomeState, action: Action): any {

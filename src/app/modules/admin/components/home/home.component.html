@@ -51,7 +51,7 @@
 <br>
 <br>
 <button mat-button 
-style="color:green">REPORT</button>
+style="color:green" [disabled]="!this.sw2" (click)="onReport()">REPORT</button>
 <div style="border: 5px solid #00aae4; background: #012b6e">
 <p>Hot</p>
 </div>

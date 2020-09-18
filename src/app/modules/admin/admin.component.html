@@ -19,13 +19,22 @@
     <body id="page-top">
         <!-- Navigation-->
        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <a class="navbar-brand">Alerta Covid</a>
+  <a class="navbar-brand">Amazon</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarText">
     <ul class="navbar-nav mr-auto">
     </ul>
+  <div *ngIf="this.sw">
+    <div *ngFor="let product of report">
+    StockTotal:{{product.total}}
+
+    HOT:{{product.total}}
+
+    COLD:{{product.total}}
+    </div>
+    </div>
     <button routerLink="/login" (click)="onLogout()" type="button" class="btn btn-warning">LOGOUT</button>
   </div>
 </nav>

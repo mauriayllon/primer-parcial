@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AmazonService } from '../../../../shared/services/amazon.service';
 import { CardComponent } from '../card/card.component';
+import { AdminComponent } from '../../admin.component';
  
  
 @Component({
@@ -11,7 +12,7 @@ import { CardComponent } from '../card/card.component';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit, OnDestroy {
- 
+  sw2=true;
   products=[];
   sw:boolean;
   productFormm : FormGroup;
@@ -23,9 +24,10 @@ export class HomeComponent implements OnInit, OnDestroy {
   productUpdateSubs: Subscription;
   idEdit: any;
  
-  constructor(private productService: AmazonService, private formBuilder: FormBuilder) {}
+  constructor(private productService: AmazonService, private formBuilder: FormBuilder, private adminComponent: AdminComponent) {}
  
   ngOnInit() {
+    this.sw2=true;
     this.loadProduct();
      this.productFormm = this.formBuilder.group({
       name:['', [Validators.minLength(3)]],
@@ -106,6 +108,11 @@ export class HomeComponent implements OnInit, OnDestroy {
       }
     );
       }
+    }
+    onReport(){
+      this.sw2=false;
+      console.log('pp')
+      this.adminComponent.onReport();
     }
  
 }
