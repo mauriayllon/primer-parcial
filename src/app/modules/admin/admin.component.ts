@@ -65,8 +65,6 @@ export class AdminComponent implements OnInit {
     for(let i=0; i< this.products.length;i++){
       if(this.products[i].type=="frio"){
         aux1 = aux1 + parseFloat(this.products[i].stock);
-        console.log('Frio',aux1);
-
       }
     }
      return aux1;
@@ -76,7 +74,6 @@ export class AdminComponent implements OnInit {
     for(let i=0; i< this.products.length;i++){
       if(this.products[i].type=="calor"){
         aux2 = aux2 + parseFloat(this.products[i].stock);
-        console.log('Calor',aux2);
       }
    }
     return aux2;

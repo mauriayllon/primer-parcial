@@ -13,7 +13,6 @@ import { CardComponent } from '../card/card.component';
 })
 export class HomeComponent implements OnInit, OnDestroy {
   sw2=true;
-  sw3:boolean;
   productsCarlor=[];
   productsFrio=[];
   sw:boolean;
@@ -29,7 +28,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   idEdit: any;
  
   constructor(private productService: AmazonService, private formBuilder: FormBuilder, private adminComponent: AdminComponent) {
-    this.var='e';
+    this.var='';
   }
  
   ngOnInit() {
@@ -146,11 +145,9 @@ export class HomeComponent implements OnInit, OnDestroy {
     onSearch(name:string){
       if(typeof name === 'string'){
       this.var=name;
-      this.sw3=false;
       this.loadProduct(false);
     }else{
       this.var='';
-      this.sw3=false;
       this.loadProduct(false);
     }}
 }
