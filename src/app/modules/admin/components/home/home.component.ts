@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   sw:boolean;
   productFormm : FormGroup;
 
-  @Input() var: string='a';
+  @Input() var: string='';
   //nameControl = new FormControl();
  
   productSubs: Subscription;
@@ -45,8 +45,6 @@ export class HomeComponent implements OnInit, OnDestroy {
   } 
  
   loadProduct(s:boolean): void {
-      console.log('hola chozzp');
-      console.log(this.var);
       if(s){
       this.productsCarlor = [];
       this.productsFrio= [];
@@ -60,7 +58,6 @@ export class HomeComponent implements OnInit, OnDestroy {
       });
     });
   }else{
-    console.log('False');
     console.log(this.var);
     this.productsCarlor = [];
     this.productsFrio= [];
@@ -147,9 +144,13 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
 
     onSearch(name:string){
+      if(typeof name === 'string'){
       this.var=name;
       this.sw3=false;
       this.loadProduct(false);
-    }
- 
+    }else{
+      this.var='';
+      this.sw3=false;
+      this.loadProduct(false);
+    }}
 }
