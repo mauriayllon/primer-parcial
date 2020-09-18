@@ -15,8 +15,6 @@ export class AdminComponent implements OnInit {
   reportSubs: Subscription;
   products=[];
   report=[];
-  aux1:number;
-  aux2:number;
   sw:boolean;
   constructor(private authService: AuthService, private amazonService:AmazonService,private store: Store<any>) {
 
@@ -48,7 +46,7 @@ export class AdminComponent implements OnInit {
     this.store.dispatch(AddProduct({product: {
     "total":this.sumar(),
     "hot": this.sumarHot(), 
-    "cold":this.sumarCold()
+    "cold": this.sumarCold()
     }}));
   }
   ngOnDestroy(){
@@ -81,8 +79,7 @@ export class AdminComponent implements OnInit {
         console.log('Calor',aux2);
       }
    }
-    this.aux2=aux2;
-    return this.aux2;
+    return aux2;
   }
 
 }
