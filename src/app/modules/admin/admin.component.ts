@@ -15,6 +15,8 @@ export class AdminComponent implements OnInit {
   reportSubs: Subscription;
   products=[];
   report=[];
+  aux1:number;
+  aux2:number;
   sw:boolean;
   constructor(private authService: AuthService, private amazonService:AmazonService,private store: Store<any>) {
 
@@ -65,8 +67,10 @@ export class AdminComponent implements OnInit {
     for(let i=0; i< this.products.length;i++){
       if(this.products[i].type=="frio"){
         aux1 = aux1 + parseFloat(this.products[i].stock);
+        console.log('Frio',aux1);
+
       }
-  }
+    }
      return aux1;
   }
   sumarHot(){
@@ -74,9 +78,11 @@ export class AdminComponent implements OnInit {
     for(let i=0; i< this.products.length;i++){
       if(this.products[i].type=="calor"){
         aux2 = aux2 + parseFloat(this.products[i].stock);
+        console.log('Calor',aux2);
       }
    }
-    return aux2;
+    this.aux2=aux2;
+    return this.aux2;
   }
 
 }
