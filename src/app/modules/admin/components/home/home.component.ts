@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AmazonService } from '../../../../shared/services/amazon.service';
 import { AdminComponent } from '../../admin.component';
 import { CardComponent } from '../card/card.component';
+import { LowerCasePipe } from '@angular/common';
  
  
 @Component({
@@ -144,7 +145,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     onSearch(name:string){
       if(typeof name === 'string'){
-      this.var=name;
+      this.var=name.toLowerCase();
       this.loadProduct(false);
     }else{
       this.var='';
